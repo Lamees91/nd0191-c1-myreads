@@ -11,7 +11,7 @@ const SearchBooks = ({ books, updateBookShelf }) => {
 
   const getBooks = (e) => {
     const searchTxt = e.target.value;
-    setQuery(searchTxt.trim());
+    setQuery(searchTxt);
     if (searchTxt) {
       const search = async () => {
         const res = await BooksAPI.search(searchTxt.trim(), 15);
@@ -19,6 +19,8 @@ const SearchBooks = ({ books, updateBookShelf }) => {
         res.length > 0 ? setNoResFound(false) : setNoResFound(true);
       };
       search();
+    } else {
+      setSearchBooks([]);
     }
   };
   return (
