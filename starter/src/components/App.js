@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import * as BooksAPI from "../utils/BooksAPI";
 import BookShelves from "../components/BookShelves";
 import SearchBooks from "../components/SearchBooks";
+import PageNotFound from "../components/PageNotFound";
 
 const App = () => {
   const [books, setBooks] = useState([]);
@@ -30,19 +31,18 @@ const App = () => {
   return (
     <Routes>
       <Route
-        exact
         path="/"
         element={
           <BookShelves books={books} updateBookShelf={updateBookShelf} />
         }
       />
       <Route
-        exact
         path="/search"
         element={
           <SearchBooks books={books} updateBookShelf={updateBookShelf} />
         }
       />
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 };
